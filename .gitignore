@@ -1,0 +1,9 @@
+# do not commit the result certificates
+*.csr
+*.crt
+*.p12
+*.pem
+*.key
+*.jks
+*.zip
+0
