@@ -6,12 +6,12 @@ https://discourse.pi-hole.net/t/enabling-https-for-your-pi-hole-web-interface/57
 ## Create combined.pem:
 
 e.g. in: /usr/cert
-cat akoessler-pihole.key akoessler-pihole.crt tee combined.pem
+cat akoessler-pihole.key akoessler-pihole.crt | tee combined.pem
 
 ## Create fullchain.pem:
 
 e.g. in: /usr/cert
-copy akoessler-pihole-bundle.ca-bundle.crt fullchain.pem
+cp akoessler-pihole-bundle.ca-bundle.crt fullchain.pem
 
 ## Configure lighttpd
 
@@ -43,7 +43,7 @@ $HTTP["host"] == "pi.hole" {
 }
 
 # enable https
-$HTTP["host"] == "pihole.akoessler.local" {
+$HTTP["host"] == "pihole.lan" {
   # Ensure the Pi-hole Block Page knows that this is not a blocked domain
   setenv.add-environment = ("fqdn" => "true")
 
